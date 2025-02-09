@@ -1,7 +1,38 @@
+let bankBranchInstance = null;
+
+class BankBranch {
+    constructor(branchInfo) {
+        // Check if the instance already exists
+        if (bankBranchInstance === null) {
+            // If no instance exists, assign this as the singleton instance
+            bankBranchInstance = this;
+            this.branchInfo = branchInfo; // Store the branch information
+        } else {
+            // If instance already exists, return the existing instance
+            return bankBranchInstance;
+        }
+    }
+
+    // Method to get branch information
+    getBranchInfo() {
+        return this.branchInfo;
+    }
+}
+
+// Usage
+const branchA = new BankBranch("Branch A: 123 Main St, Cityville");
+console.log(branchA.getBranchInfo());
+
+const branchB = new BankBranch("Branch B: 456 Oak Rd, Townsville");
+console.log(branchB.getBranchInfo()); 
+
+console.log(branchA === branchB); // Output: true (both refer to the same instance)
+
+
 // This one will be a little tricky. So check out this overview first: https://www.youtube.com/watch?v=sJ-c3BA-Ypo
 
 // 1. Create a variable to store the singleton instance of the bank branch. "bankBranchInstance"
-
+ 
 // 2. Define a class called `BankBranch` for managing branch information.
 
 // 3. In the `BankBranch` class:
